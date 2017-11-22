@@ -1,5 +1,16 @@
-$primary: #602f6b;
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+$primary-color: #602f6b;
+$primary-text-color: #ffffff;
+$primary-font: 'Ubuntu', sans-serif;
+
+
+body {
+  background-color:$primary-color;
+  color: $primary-text-color;
+  font-family: $primary-font;
+}
 
 h2 {
-	color: $primary;
+	color: $primary-text-color;
 }
