@@ -14,3 +14,49 @@ body {
 h2 {
 	color: $primary-text-color;
 }
+
+.container {
+  width: 75%;
+  margin: 0 auto;
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px;
+  width: 20%;
+  min-width: 200px;
+
+}
+
+
+.artist-search-box {
+  width: 250px;
+  padding: 20px;
+  background-color: $primary-text-color;
+  margin: 10px;
+  overflow: hidden;
+
+  float: left;
+
+
+  img {
+    width: 100px;
+    height: 100px;
+    float: left;
+  }
+
+  .artist-name {
+    display: inline-block;
+    margin-left: 20px;
+  }
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
