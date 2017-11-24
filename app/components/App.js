@@ -6,7 +6,7 @@ require('../style.scss');
 
 // components
 import ArtistList from "./ArtistList";
-import Search from "./Search";
+// import Search from "./Search";
 import Artist from "./Artist";
 import ArtistAPI from "../api/ArtistAPI";
 
@@ -19,7 +19,7 @@ class App extends React.Component {
                     <hr/>
                 </header>
 
-                <Search query="Artists"/>
+                {/*<Search query="Artists"/>*/}
 
                 <BrowserRouter>
                     <div className="container">

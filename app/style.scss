@@ -20,12 +20,15 @@ h2 {
   margin: 0 auto;
 }
 
-input {
+input, button {
   border-radius: 5px;
   padding: 5px;
+  margin: 5px;
+}
+
+input {
   width: 20%;
   min-width: 200px;
-
 }
 
 
@@ -43,10 +46,10 @@ input {
     width: 100px;
     height: 100px;
     float: left;
+    margin-right: 20px;
   }
 
   .artist-name {
-    display: inline-block;
     margin-left: 20px;
   }
 }
