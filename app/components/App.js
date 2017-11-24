@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -9,7 +8,7 @@ require('../style.scss');
 import ArtistList from "./ArtistList";
 import Search from "./Search";
 import Artist from "./Artist";
-import ArtistAPI from "./ArtistAPI";
+import ArtistAPI from "../api/ArtistAPI";
 
 class App extends React.Component {
     render() {

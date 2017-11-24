@@ -2,12 +2,39 @@ import React from 'react';
 import ArtistItem from "./ArtistItem";
 import {Link, Route} from 'react-router-dom';
 
-import ArtistAPI from './ArtistAPI';
-import Artist from "./Artist";
+const util = require('util');
+const fetch = require ('node-fetch');
 
+import ArtistAPI from '../api/ArtistAPI';
 
 class ArtistList extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            hits: [],
+            isLoading: false,
+            error: null,
+        };
+    }
+
+    componentDidMount() {
+        this.setState({ isLoading: true });
+
+        fetch('http://localhost:3001/spotify',
+            {})
+            .then(response => response.json())
+            .then(data => console.log(data));
+
+        fetch('http://localhost:3001/spotify/search',
+            {})
+            .then(response => response.json())
+            .then(data => console.log(data));
+    }
+
     render() {
+
         return (
             <div>
                 Search results:
