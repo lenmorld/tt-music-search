@@ -12,7 +12,6 @@ class Artist extends React.Component {
             isLoading: false,
             error: null,
         };
-
         // bind functions that uses setState()
     }
 
@@ -44,9 +43,6 @@ class Artist extends React.Component {
             return <p>Loading ...</p>;
         }
 
-
-        // get param artist from router link
-        // const artistId = this.props.match.params.id;
         const artist = this.props.location.artist;
 
         return(
@@ -58,7 +54,7 @@ class Artist extends React.Component {
                         albums.map((al) => (
                             <li key={al.id}>
                                 <div className="album">
-                                    <Album album={al} />
+                                    <Album album={al} artistGenre={artist.genres}/>
                                 </div>
                             </li>
                         ))

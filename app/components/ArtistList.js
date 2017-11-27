@@ -2,9 +2,6 @@ import React from 'react';
 import ArtistItem from "./ArtistItem";
 import {Link} from 'react-router-dom';
 
-const util = require('util');
-const fetch = require('node-fetch');
-
 import Search from "./Search";
 
 class ArtistList extends React.Component {
@@ -62,6 +59,7 @@ class ArtistList extends React.Component {
                 this.setState({hits: JSON.parse(data), isLoading: false})
             })
             .catch(error => this.setState({error, isLoading: false}));
+
     }
 
     render() {
@@ -72,7 +70,7 @@ class ArtistList extends React.Component {
             return <p>Loading ...</p>;
         }
 
-        console.log("hits:", hits);
+        // console.log("hits:", hits);
 
         return (
             <div>

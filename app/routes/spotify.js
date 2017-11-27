@@ -76,10 +76,10 @@ function searchArtists(query, res) {
     });
 }
 
-function searchAlbums(albumId, res) {
+function searchAlbums(artistId, res) {
     // use the token to access the Spotify Web API
     var options = {
-        url: `https://api.spotify.com/v1/artists/${albumId}/albums?market=CA`,
+        url: `https://api.spotify.com/v1/artists/${artistId}/albums?market=CA`,
         headers: {
             'Authorization': 'Bearer ' + spotify.access_token
         },
@@ -87,8 +87,26 @@ function searchAlbums(albumId, res) {
     };
 
     request.get(options, function(error, response, body) {
-        console.log(response.body.items);
+        // console.log(response.body.items);
         res.json(JSON.stringify(response.body.items));
+    });
+}
+
+
+function getAlbumDetails(albumId, res) {
+    // use the token to access the Spotify Web API
+
+    var options = {
+        url: `https://api.spotify.com/v1/albums/${albumId}?market=CA`,
+        headers: {
+            'Authorization': 'Bearer ' + spotify.access_token
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body) {
+        // console.log(response.body);
+        res.json(JSON.stringify(response.body));
     });
 }
 
@@ -121,6 +139,33 @@ router.get('/albums/:id', function (req, res) {
 
     // const query = req.body.query;
 
+    const artistId = req.params.id;
+
+    if (!spotify.access_token) {
+        console.log("GET TOKEN");
+
+        getTokenPromise
+            .then( function(token) {
+                spotify.access_token = token;           // consume promise
+                console.log("token: ", spotify.access_token);
+                searchAlbums(artistId, res);
+            })
+            .catch(function(err) {
+                console.log("consume:", err);
+                res.json({"error": err});
+                // spotify.access_token = null;
+            });
+    } else {
+        searchAlbums(artistId, res);          // if token still good, search directly
+    }
+});
+
+
+
+
+router.get('/details/:id', function (req, res) {
+
+    // const query = req.body.query;
     const albumId = req.params.id;
 
     if (!spotify.access_token) {
@@ -130,7 +175,7 @@ router.get('/albums/:id', function (req, res) {
             .then( function(token) {
                 spotify.access_token = token;           // consume promise
                 console.log("token: ", spotify.access_token);
-                searchAlbums(albumId, res);
+                getAlbumDetails(albumId, res);
             })
             .catch(function(err) {
                 console.log("consume:", err);
@@ -138,10 +183,8 @@ router.get('/albums/:id', function (req, res) {
                 // spotify.access_token = null;
             });
     } else {
-        searchAlbums(albumId, res);          // if token still good, search directly
+        getAlbumDetails(albumId, res);          // if token still good, search directly
     }
 });
-
-
 
 module.exports = router;
