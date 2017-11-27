@@ -18,15 +18,15 @@ router.get('/',function (req, res) {
 router.get('/newrelease', function (req, res) {
     res.json(
         JSON.stringify([
-            { name: "Bob Marley", id: "1", albums: [{name: "Exodus", year: 1977}] },
-            { name: "Queen", id: "2"},
-            { name: "Matchbox 20", id: "3"},
-            { name: "Foo Fighters", id: "4"},
-            { name: "Blink 182", id: "5"},
-            { name: "The Head and the Heart", id: "6"},
-            { name: "Keane", id: "7"},
-            { name: "Arctic Monkeys", id: "8"},
-            { name: "3 Doors Down", id: "9"},
+            { name: "Bob Marley", id: "1", albums: [{name: "Exodus", year: 1977}], images: [{"url": ""}] },
+            { name: "Queen", id: "2", images: [{"url": ""}]},
+            { name: "Matchbox 20", id: "3", images: [{"url": ""}]},
+            { name: "Foo Fighters", id: "4", images: [{"url": ""}]},
+            { name: "Blink 182", id: "5", images: [{"url": ""}]},
+            { name: "The Head and the Heart", id: "6", images: [{"url": ""}]},
+            { name: "Keane", id: "7", images: [{"url": ""}]},
+            { name: "Arctic Monkeys", id: "8", images: [{"url": ""}]},
+            { name: "3 Doors Down", id: "9", images: [{"url": ""}]},
         ])
     );
 });
