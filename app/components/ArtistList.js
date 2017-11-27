@@ -85,7 +85,7 @@ class ArtistList extends React.Component {
                             <li key={a.id}>
                                 <Link to={{pathname: `/artist/${a.id}`, artist: a}}>
                                     <div className="artist-search-box">
-                                        <ArtistItem name={a.name}/>
+                                        <ArtistItem artist={a}/>
                                     </div>
                                 </Link>
                             </li>
