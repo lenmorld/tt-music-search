@@ -29,7 +29,7 @@ class Search extends React.Component {
                            onKeyPress={this.updateSearchText.bind(this)}  />
                 </div>
                 <p>
-                    {this.state.searchText}
+                    {/*{this.state.searchText}*/}
                 </p>
             </div>
         );

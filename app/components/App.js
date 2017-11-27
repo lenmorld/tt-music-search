@@ -6,9 +6,7 @@ require('../style.scss');
 
 // components
 import ArtistList from "./ArtistList";
-// import Search from "./Search";
 import Artist from "./Artist";
-import ArtistAPI from "../api/ArtistAPI";
 
 class App extends React.Component {
     render() {
@@ -18,26 +16,12 @@ class App extends React.Component {
                     <h2>Lenny's music search</h2>
                     <hr/>
                 </header>
-
-                {/*<Search query="Artists"/>*/}
-
                 <BrowserRouter>
                     <div className="container">
                         <Switch>
                             <Route exact path="/" component={ArtistList}/>
-                            <Route
-                                path='/artist/:id'
-                                render={({match}) => {
-                                        const id = match.params.id;
-                                        const artist = ArtistAPI.get(id);
-                                        return (
-                                            <Artist id={id} artist={artist}/>
-                                        )
-                                    }
-                                }/>
+                            <Route path='/artist/:id' component={Artist}/>
                         </Switch>
-
-
                     </div>
                 </BrowserRouter>
             </div>

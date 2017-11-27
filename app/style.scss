@@ -63,3 +63,26 @@ a {
   text-decoration: none;
 }
 
+
+.album {
+  width: 250px;
+  padding: 20px;
+  background-color: $primary-text-color;
+  margin: 10px;
+  overflow: hidden;
+
+  float: left;
+
+  img {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 20px;
+  }
+
+  .album-name {
+    margin-left: 20px;
+    color: $primary-color;
+  }
+}
+

@@ -1,9 +1,9 @@
 import React from 'react';
 import ArtistItem from "./ArtistItem";
-import {Link, Route} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const util = require('util');
-const fetch = require ('node-fetch');
+const fetch = require('node-fetch');
 
 import Search from "./Search";
 
@@ -16,6 +16,7 @@ class ArtistList extends React.Component {
             hits: [],
             isLoading: false,
             error: null,
+            headline: "New releases:"
         };
 
         // bind functions that uses setState()
@@ -23,24 +24,26 @@ class ArtistList extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ isLoading: true });
+        this.setState({isLoading: true});
 
         fetch('http://localhost:3001/spotify/newrelease',
             {})
             .then(response => {
-                if(response.ok) {
+                if (response.ok) {
                     return response.json();
                 }
             })
-            .then(data =>  {
-                this.setState({ hits: JSON.parse(data), isLoading: false })
+            .then(data => {
+                this.setState({hits: JSON.parse(data), isLoading: false})
             })
-            .catch(error => this.setState( { error, isLoading: false } ));
+            .catch(error => this.setState({error, isLoading: false}));
     }
 
 
-    handleSearch(query){
+    handleSearch(query) {
         console.log("search query: ", query);
+
+        this.setState({headline: "Search results for: " + query});
 
         fetch('http://localhost:3001/spotify/search',
             {
@@ -51,19 +54,19 @@ class ArtistList extends React.Component {
                 }
             })
             .then(response => {
-                if(response.ok) {
+                if (response.ok) {
                     return response.json();
                 }
             })
-            .then(data =>  {
-                this.setState({ hits: JSON.parse(data), isLoading: false })
+            .then(data => {
+                this.setState({hits: JSON.parse(data), isLoading: false})
             })
-            .catch(error => this.setState( { error, isLoading: false } ));
+            .catch(error => this.setState({error, isLoading: false}));
     }
 
     render() {
 
-        const { hits, isLoading } = this.state;
+        const {hits, isLoading} = this.state;
 
         if (isLoading) {
             return <p>Loading ...</p>;
@@ -75,12 +78,12 @@ class ArtistList extends React.Component {
             <div>
                 <Search query="Artists"
                         onSearch={this.handleSearch}/>
-                <h2>Search results:</h2>
+                <h2>{this.state.headline}</h2>
                 <ul>
                     {
                         hits.map((a) => (
                             <li key={a.id}>
-                                <Link to={`/artist/${a.id}`}>
+                                <Link to={{pathname: `/artist/${a.id}`, artist: a}}>
                                     <div className="artist-search-box">
                                         <ArtistItem name={a.name}/>
                                     </div>

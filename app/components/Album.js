@@ -1,7 +1,8 @@
 import React from 'react';
 
 
-class ArtistItem extends React.Component {
+class Album extends React.Component {
+
     render() {
 
         // console.log(this.props);
@@ -9,11 +10,10 @@ class ArtistItem extends React.Component {
         return(
             <div>
                 <img />
-                <div className="album-name">{this.props.name}</div>
+                <div className="album-name">{this.props.album.name}</div>
             </div>
-        );
+        )
     }
 }
 
-
-export default ArtistItem;
+export default  Album;
