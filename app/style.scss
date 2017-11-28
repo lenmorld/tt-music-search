@@ -5,10 +5,14 @@ $primary-text-color: #ffffff;
 $primary-font: 'Ubuntu', sans-serif;
 
 
-body {
+body, button, input {
   background-color:$primary-color;
   color: $primary-text-color;
   font-family: $primary-font;
+}
+
+h1 {
+  text-align: center;
 }
 
 h2 {
@@ -24,6 +28,7 @@ input, button {
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
+  font-weight: bold;
 }
 
 input {
@@ -143,6 +148,93 @@ a {
     ol {
       padding-left: 15px;
     }
+
+    .track {
+      position: relative;
+      //display: none;
+
+      .popup {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: rgba(0,0,0, 0.5);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .popup_inner {
+        //position: absolute;
+        //left: 40%;
+        //right: 40%;
+        //top: 10%;
+        //bottom: 10%;
+        width: 300px;
+        margin: auto;
+        //position: relative;
+        background: $primary-color;
+        color: $primary-text-color;
+
+        h1,h2,h3 {
+          margin: 5px auto;
+          text-align: center;
+        }
+
+        .popup_container {
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .close-button-right {
+            //float:right;
+            button {
+              background-color: $primary-text-color;
+              color: $primary-color;
+            }
+          }
+
+          .details-left {
+            //float: left;
+          }
+
+          .media-bottom {
+            //clear: both;
+            padding-top: 10px;
+
+            a {
+              text-decoration: none;
+              color: $primary-text-color;
+            }
+
+            img {
+              width: 250px;
+            }
+
+            .player {
+
+              margin: 10px 0px;
+
+              audio {
+                width: 100%;
+              }
+            }
+          }
+        }
+
+
+
+        padding: 10px;
+      }
+    }
+
   }
 }
 

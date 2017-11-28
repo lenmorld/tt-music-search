@@ -1,4 +1,5 @@
 import React from 'react';
+import Track from "./Track";
 
 
 class Album extends React.Component {
@@ -10,6 +11,7 @@ class Album extends React.Component {
             details: {},
             isLoading: false,
             error: null,
+            // showPopup: false,
         };
         // bind functions that uses setState()
     }
@@ -52,6 +54,10 @@ class Album extends React.Component {
         return stars;
     }
 
+
+
+
+
     render() {
 
         const { details, isLoading } = this.state;
@@ -60,8 +66,8 @@ class Album extends React.Component {
             return <p>Loading ...</p>;
         }
 
-        console.log("album details: ", details);
-        console.log(this.props);
+        // console.log("album details: ", details);
+        // console.log(this.props);
 
         const album = this.props.album;
 
@@ -90,8 +96,8 @@ class Album extends React.Component {
                     <ol>
                     {
                         tracks.map((track) => (
-                            <li>
-                                {track.name}
+                            <li key={track.id}>
+                                    <Track track={track} albumName={album.name} image={image.url} />
                             </li>
                         ))
                     }

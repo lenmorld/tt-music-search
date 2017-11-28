@@ -13,7 +13,7 @@ class App extends React.Component {
         return (
             <div>
                 <header>
-                    <h2>Lenny's music search</h2>
+                    <a href="/"><h2>Lenny's music search</h2></a>
                     <hr/>
                 </header>
                 <BrowserRouter>
