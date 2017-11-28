@@ -64,51 +64,84 @@ a {
 }
 
 
+// flex box
+.album-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;        // horizontal
+  align-items: flex-start;        // vertical
+}
+
 .album {
   width: 250px;
   padding: 20px;
   background-color: $primary-text-color;
-  margin: 10px;
-  overflow: hidden;
+  margin: 10px 15px;
   color: $primary-color;
   text-align: center;
 
-  float: left;
+  //overflow: hidden;
+  //float: left;
+
+  // transition: show tracks
+  &:hover .tracks {
+    max-height: 500px;
+  }
+
 
   img {
     width: 100%;
     height: 200px;
   }
 
-  .album-name {
-    margin: 10px auto;
-  }
+  .album-details{
 
-  .genre {
-    font-size: 12px;
-  }
+    display: block;
+    overflow: hidden;
 
-  .stars{
-    float: left;
-    width: 50%;
-    text-align: left;
-  }
+    .album-name {
+      margin: 10px auto;
 
-  .date {
-    float: right;
-    text-align: right;
-    width: 50%
+      // keep in one line
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 200px;
+      white-space: nowrap;
+    }
+
+    .genre {
+      font-size: 12px;
+    }
+
+    .stars{
+      float: left;
+      width: 50%;
+      text-align: left;
+    }
+
+    .date {
+      float: right;
+      text-align: right;
+      width: 50%
+    }
+
   }
 
   .tracks {
-    clear: both;
     margin-top: 10px;
     font-size: 12px;
     text-align: left;
     padding: 5px;
 
+    // sliding
+    display: block;
+    overflow-y: hidden;
+    max-height: 0;
+
+    transition: max-height 0.7s ease-in-out;
+
     ol {
-      padding-left: 5px;
+      padding-left: 15px;
     }
   }
 }

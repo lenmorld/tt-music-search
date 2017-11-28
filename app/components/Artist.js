@@ -48,18 +48,14 @@ class Artist extends React.Component {
         return(
             <div>
                 <h3>{artist.name}</h3>
-                <div>
-                    <ul>
+                <div class="album-container">
                     {
                         albums.map((al) => (
-                            <li key={al.id}>
-                                <div className="album">
-                                    <Album album={al} artistGenre={artist.genres}/>
-                                </div>
-                            </li>
+                            <div className="album" key={al.id}>
+                                <Album album={al} artistGenre={artist.genres}/>
+                            </div>
                         ))
                     }
-                    </ul>
                 </div>
 
             </div>

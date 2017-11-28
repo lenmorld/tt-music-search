@@ -80,10 +80,12 @@ class Album extends React.Component {
         return(
             <div>
                 <img src={image.url}/>
-                <div className="album-name">{album.name}</div>
-                <p className="genre">{genre}</p>
-                <div className="stars">{stars}</div>
-                <div className="date">{releaseDate}</div>
+                <div className="album-details">
+                    <div className="album-name">{album.name}</div>
+                    <p className="genre">{genre}</p>
+                    <div className="stars">{stars}</div>
+                    <div className="date">{releaseDate}</div>
+                </div>
                 <div className="tracks">
                     <ol>
                     {
