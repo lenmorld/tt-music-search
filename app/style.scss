@@ -31,10 +31,16 @@ input, button {
   font-weight: bold;
 }
 
-input {
-  width: 20%;
-  min-width: 200px;
+.search {
+  input {
+    width: 20%;
+    min-width: 200px;
+    font-size: 20px;
+  }
+
 }
+
+
 
 
 .artist-search-box {
@@ -147,6 +153,14 @@ a {
 
     ol {
       padding-left: 15px;
+
+      li {
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
 
     .track {

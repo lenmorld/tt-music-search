@@ -3,6 +3,7 @@ let router = express.Router();
 var request = require('request');
 
 const SEARCH_TYPE = 'artist';
+const NEW_RELEASES_LIMIT = 3;
 
 let spotify = {
     client_id: '8d7962d9b8794506a9dc3323835add34',
@@ -15,21 +16,6 @@ router.get('/',function (req, res) {
 });
 
 
-router.get('/newrelease', function (req, res) {
-    res.json(
-        JSON.stringify([
-            { name: "Bob Marley", id: "1", albums: [{name: "Exodus", year: 1977}], images: [{"url": ""}] },
-            { name: "Queen", id: "2", images: [{"url": ""}]},
-            { name: "Matchbox 20", id: "3", images: [{"url": ""}]},
-            { name: "Foo Fighters", id: "4", images: [{"url": ""}]},
-            { name: "Blink 182", id: "5", images: [{"url": ""}]},
-            { name: "The Head and the Heart", id: "6", images: [{"url": ""}]},
-            { name: "Keane", id: "7", images: [{"url": ""}]},
-            { name: "Arctic Monkeys", id: "8", images: [{"url": ""}]},
-            { name: "3 Doors Down", id: "9", images: [{"url": ""}]},
-        ])
-    );
-});
 
 
 // create Promise for getting token
@@ -58,6 +44,23 @@ let getTokenPromise = new Promise(function (resolve, reject) {
     });
 });
 
+
+
+function getNewReleases(res) {
+    // use the token to access the Spotify Web API
+    var options = {
+        url: `https://api.spotify.com/v1/browse/new-releases?country=CA&limit=${NEW_RELEASES_LIMIT}`,
+        headers: {
+            'Authorization': 'Bearer ' + spotify.access_token
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body) {
+        console.log(response.body.albums.items);
+        res.json(JSON.stringify(response.body.albums.items));
+    });
+}
 
 
 function searchArtists(query, res) {
@@ -161,8 +164,6 @@ router.get('/albums/:id', function (req, res) {
 });
 
 
-
-
 router.get('/details/:id', function (req, res) {
 
     // const query = req.body.query;
@@ -186,5 +187,27 @@ router.get('/details/:id', function (req, res) {
         getAlbumDetails(albumId, res);          // if token still good, search directly
     }
 });
+
+
+router.get('/newrelease', function (req, res) {
+    if (!spotify.access_token) {
+        console.log("GET TOKEN");
+
+        getTokenPromise
+            .then( function(token) {
+                spotify.access_token = token;           // consume promise
+                console.log("token: ", spotify.access_token);
+                getNewReleases(res);
+            })
+            .catch(function(err) {
+                console.log("consume:", err);
+                res.json({"error": err});
+                // spotify.access_token = null;
+            });
+    } else {
+        getNewReleases(res);          // if token still good, search directly
+    }
+});
+
 
 module.exports = router;

@@ -21,6 +21,8 @@ class Artist extends React.Component {
         // artistId = this.props.id
         const artistId = this.props.match.params.id;
 
+        console.log("props: ", this.props);
+
         fetch(`http://localhost:3001/spotify/albums/${artistId}`,
             {})
             .then(response => {
@@ -57,7 +59,6 @@ class Artist extends React.Component {
                         ))
                     }
                 </div>
-
             </div>
         );
     }

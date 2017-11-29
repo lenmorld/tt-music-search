@@ -28,7 +28,7 @@ class Track extends React.Component {
         const track = this.props.track;
         const albumName = this.props.albumName;
         const image = this.props.image;
-        console.log(track);
+        // console.log(track);
 
         return(
             <div>
