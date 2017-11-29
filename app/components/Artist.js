@@ -63,7 +63,7 @@ class Artist extends React.Component {
             return <p>Loading ...</p>;
         }
 
-        console.log("artist", artist);
+        // console.log("artist", artist);
 
         return(
             <div>

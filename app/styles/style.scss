@@ -140,6 +140,14 @@ input, button {
     display: block;
     overflow: hidden;
 
+    .artist-link {
+      margin-top: 10px;
+      a {
+        text-decoration: underline;
+      }
+
+    }
+
     .album-name {
       margin: 10px auto;
 

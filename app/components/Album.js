@@ -1,6 +1,6 @@
 import React from 'react';
 import Track from "./Track";
-
+import {Link} from 'react-router-dom';
 
 class Album extends React.Component {
 
@@ -83,13 +83,21 @@ class Album extends React.Component {
             image = album.images[0];
         }
 
+        const artist = (this.props.newrelease && album.artists.length) ? album.artists[0] : null ;
+
         return(
             <div>
                 <img src={image.url}/>
                 <div className="album-details">
-                    {/*<Link key={a.id} to={{pathname: `/artists/${a.id}`}}>*/}
-                        {/*<div className="album-name">{album.name}</div>*/}
-                    {/*</Link>*/}
+                    {
+                        artist ?
+                            <div className="artist-link">
+                                <Link key={artist.id} to={{pathname: `/artists/${artist.id}`}}>
+                                    {artist.name}
+                                </Link>
+                            </div>
+                            : null
+                    }
                     <div className="album-name">{album.name}</div>
                     <p className="genre">{genre}</p>
                     <div className="stars">{stars}</div>

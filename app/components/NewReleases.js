@@ -47,7 +47,7 @@ class NewReleases extends React.Component {
                 {
                     newAlbums.map((al) => (
                         <div className="album" key={al.id}>
-                            <Album album={al} />
+                            <Album album={al} newrelease={true}/>
                         </div>
                     ))
                 }
