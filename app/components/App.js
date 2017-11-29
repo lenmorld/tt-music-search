@@ -28,6 +28,7 @@ class App extends React.Component {
                         <div className="container">
                             <Switch>
                                 <Route exact path="/" component={ArtistList}/>
+                                <Route exact path="/artists" component={ArtistList}/>
                                 <Route exact path="/newreleases" component={NewReleases}/>
                                 <Route path='/artists/:id' component={Artist}/>
                             </Switch>

@@ -11,12 +11,6 @@ let spotify = {
     access_token: null
 }
 
-router.get('*',function (req, res) {
-    res.json({"message": "Hello World"});
-});
-
-
-
 
 // create Promise for getting token
 let getTokenPromise = new Promise(function (resolve, reject) {

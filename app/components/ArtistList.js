@@ -15,7 +15,7 @@ class ArtistList extends React.Component {
             isLoading: false,
             error: null,
             headline: "",
-            prevQuery: null,
+            query: "",
         };
 
         // bind functions that uses setState()
@@ -23,16 +23,17 @@ class ArtistList extends React.Component {
     }
 
     componentDidMount() {
-
-        console.log(this.props);
-        if(this.state.prevQuery) {
-            this.handleSearch(this.state.prevQuery);
+        const query = this.props.location.state;
+        // if query is set, redo search
+        if(query) {
+            this.handleSearch(query.artistQuery);
+            this.setState({query: query.artistQuery});
         }
     }
-    
+
 
     handleSearch(query) {
-        console.log("search query: ", query);
+        // console.log("search query: ", query);
 
         fetch('http://localhost:3001/spotify/search',
             {
@@ -51,10 +52,11 @@ class ArtistList extends React.Component {
                 this.setState({
                     hits: JSON.parse(data),
                     isLoading: false,
-                    prevQuery: query,
                 })
 
                 if(this.state.hits.length) {
+                    this.props.history.push(`/artists?q=${query}`, {artistQuery: query});  // push query on history
+
                     this.setState({ headline: "Search results for: " + query});
                 } else {
                     this.setState({ headline: "No results found for: " + query});
@@ -66,7 +68,7 @@ class ArtistList extends React.Component {
 
 
     render() {
-        const {hits, isLoading} = this.state;
+        const {query, hits, isLoading} = this.state;
 
         if (isLoading) {
             return <p>Loading ...</p>;
@@ -75,7 +77,8 @@ class ArtistList extends React.Component {
         return (
             <div>
             <Search query="Artists"
-                    onSearch={this.handleSearch} />
+                    onSearch={this.handleSearch}
+                    queryValue={query}/>
             <h2>{this.state.headline}</h2>
             <div className="artists-container">
             {

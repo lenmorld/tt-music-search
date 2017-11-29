@@ -4,9 +4,22 @@ class Search extends React.Component {
 
     constructor (props) {
         super(props);
+
         this.state = {
             searchText: '',
+            queryValue: '',
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log("next", nextProps);
+
+        if (!this.state.queryValue) {
+            console.log("update query");
+            this.setState({
+                queryValue: nextProps.queryValue
+            });
+        }
     }
 
     updateSearchText(e) {
@@ -20,12 +33,19 @@ class Search extends React.Component {
         }
     }
 
+    onChange(e) {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
     render() {
         return(
             <div className="search">
                 <input type="search"
                        placeholder={`Search ${this.props.query}`}
-                       onKeyPress={this.updateSearchText.bind(this)}  />
+                       onKeyPress={this.updateSearchText.bind(this)}
+                        value={this.state.queryValue}
+                       name="queryValue"
+                       onChange={(value) => this.onChange(value)} />
             </div>
         );
     }
