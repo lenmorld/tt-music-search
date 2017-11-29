@@ -14,10 +14,9 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-//Serving the files on the dist folder
+// serve React app on dist
 app.use(express.static(DIST_DIR));
 
-//Send index.html when the user access the web
 app.get("/", function (req, res) {
     res.sendFile(path.join(DIST_DIR, "index.html"));
 });
