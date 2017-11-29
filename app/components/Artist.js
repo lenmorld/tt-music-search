@@ -8,6 +8,7 @@ class Artist extends React.Component {
         super(props);
 
         this.state = {
+            artist: {},
             albums: [],
             isLoading: false,
             error: null,
@@ -15,14 +16,27 @@ class Artist extends React.Component {
         // bind functions that uses setState()
     }
 
-    componentDidMount() {
-        this.setState({ isLoading: true });
 
-        // artistId = this.props.id
-        const artistId = this.props.match.params.id;
+    componentWillMount() {
+        console.log("props will mount", this.props);
+    }
 
-        console.log("props: ", this.props);
 
+    fetchArtist(artistId) {
+        fetch(`http://localhost:3001/spotify/artists/${artistId}`,
+            {})
+            .then(response => {
+                if(response.ok) {
+                    return response.json();
+                }
+            })
+            .then(data =>  {
+                this.setState({ artist: JSON.parse(data), isLoading: false })
+            })
+            .catch(error => this.setState( { error, isLoading: false } ));
+    }
+
+    fetchArtistAlbums(artistId) {
         fetch(`http://localhost:3001/spotify/albums/${artistId}`,
             {})
             .then(response => {
@@ -37,15 +51,25 @@ class Artist extends React.Component {
     }
 
 
+    componentDidMount() {
+        this.setState({ isLoading: true });
+
+        const artistId = this.props.match.params.id;
+
+        this.fetchArtist(artistId);
+        this.fetchArtistAlbums(artistId);
+    }
+
+
     render() {
 
-        const { albums, isLoading } = this.state;
+        const { artist, albums, isLoading } = this.state;
 
         if (isLoading) {
             return <p>Loading ...</p>;
         }
 
-        const artist = this.props.location.artist;
+        // console.log("artist", artist);
 
         return(
             <div>

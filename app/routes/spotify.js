@@ -11,7 +11,7 @@ let spotify = {
     access_token: null
 }
 
-router.get('/',function (req, res) {
+router.get('*',function (req, res) {
     res.json({"message": "Hello World"});
 });
 
@@ -59,6 +59,24 @@ function getNewReleases(res) {
     request.get(options, function(error, response, body) {
         console.log(response.body.albums.items);
         res.json(JSON.stringify(response.body.albums.items));
+    });
+}
+
+
+function getArtist(artistId, res) {
+    // use the token to access the Spotify Web API
+
+    var options = {
+        url: `https://api.spotify.com/v1/artists/${artistId}`,
+        headers: {
+            'Authorization': 'Bearer ' + spotify.access_token
+        },
+        json: true
+    };
+
+    request.get(options, function(error, response, body) {
+        // console.log(response.body);
+        res.json(JSON.stringify(response.body));
     });
 }
 
@@ -137,6 +155,31 @@ router.post('/search', function (req, res) {
     }
 });
 
+
+router.get('/artists/:id', function (req, res) {
+
+    // const query = req.body.query;
+
+    const artistId = req.params.id;
+
+    if (!spotify.access_token) {
+        console.log("GET TOKEN");
+
+        getTokenPromise
+            .then( function(token) {
+                spotify.access_token = token;           // consume promise
+                console.log("token: ", spotify.access_token);
+                getArtist(artistId, res);
+            })
+            .catch(function(err) {
+                console.log("consume:", err);
+                res.json({"error": err});
+                // spotify.access_token = null;
+            });
+    } else {
+        getArtist(artistId, res);          // if token still good, search directly
+    }
+});
 
 router.get('/albums/:id', function (req, res) {
 

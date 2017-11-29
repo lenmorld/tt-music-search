@@ -80,7 +80,7 @@ class ArtistList extends React.Component {
             <div className="artists-container">
             {
                 hits.map((a) => (
-                    <Link key={a.id} to={{pathname: `/artists/${a.id}`, artist: a}}>
+                    <Link key={a.id} to={{pathname: `/artists/${a.id}`}}>
                         <div className="artist">
                             <ArtistItem artist={a}/>
                         </div>
