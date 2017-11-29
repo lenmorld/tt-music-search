@@ -16,12 +16,6 @@ class Artist extends React.Component {
         // bind functions that uses setState()
     }
 
-
-    componentWillMount() {
-        console.log("props will mount", this.props);
-    }
-
-
     fetchArtist(artistId) {
         fetch(`http://localhost:3001/spotify/artists/${artistId}`,
             {})
@@ -69,7 +63,7 @@ class Artist extends React.Component {
             return <p>Loading ...</p>;
         }
 
-        // console.log("artist", artist);
+        console.log("artist", artist);
 
         return(
             <div>

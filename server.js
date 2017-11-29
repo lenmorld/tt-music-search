@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use('/spotify', require('./app/routes/spotify'));
+app.use('/spotify', require('./app/api/spotify'));
 
 app.listen(port, function () {
    console.log("Hello");
