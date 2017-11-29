@@ -1,7 +1,9 @@
 ### TouchTunes challenge
 
-
+```
 $ npm install
+```
+
 
 to run:
 ```
