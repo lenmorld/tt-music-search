@@ -35,7 +35,7 @@ class ArtistList extends React.Component {
     handleSearch(query) {
         // console.log("search query: ", query);
 
-        fetch('http://localhost:3001/spotify/search',
+        fetch('http://localhost:3000/spotify/search',
             {
                 method: 'post',
                 body: JSON.stringify({query: query}),

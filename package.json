@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --hot",
-    "build": "rimraf dist && webpack --progress --profile --colors"
+    "start": "webpack && node server.js",
+    "build": "rimraf dist && webpack --progress --profile --colors",
+    "dev": "webpack-dev-server --hot"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

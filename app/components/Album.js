@@ -24,7 +24,7 @@ class Album extends React.Component {
 
         // console.log("album: ", album.id);
 
-        fetch(`http://localhost:3001/spotify/details/${album.id}`,
+        fetch(`http://localhost:3000/spotify/details/${album.id}`,
             {})
             .then(response => {
                 if(response.ok) {

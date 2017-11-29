@@ -18,7 +18,7 @@ class NewReleases extends React.Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch('http://localhost:3001/spotify/newrelease',
+        fetch('http://localhost:3000/spotify/newrelease',
             {})
             .then(response => {
                 if (response.ok) {

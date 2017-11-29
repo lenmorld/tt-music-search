@@ -10,8 +10,6 @@ const HtmlWebPackPluginConfig = new HtmlWebPackPlugin({
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
     './app/index.js'],
     output: {
       path: path.resolve(__dirname, "dist"),
@@ -20,8 +18,8 @@ module.exports = {
     },
     devServer: {
       contentBase: './dist',
-      hot: true,
-      port: 3000,
+      // hot: true,
+      port: 3001,
     },
     module: {
       loaders: [

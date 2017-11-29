@@ -12,10 +12,8 @@ class Search extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log("next", nextProps);
-
         if (!this.state.queryValue) {
-            console.log("update query");
+            // console.log("update query");
             this.setState({
                 queryValue: nextProps.queryValue
             });
