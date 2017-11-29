@@ -87,17 +87,21 @@ class Album extends React.Component {
             <div>
                 <img src={image.url}/>
                 <div className="album-details">
+                    {/*<Link key={a.id} to={{pathname: `/artists/${a.id}`}}>*/}
+                        {/*<div className="album-name">{album.name}</div>*/}
+                    {/*</Link>*/}
                     <div className="album-name">{album.name}</div>
                     <p className="genre">{genre}</p>
                     <div className="stars">{stars}</div>
                     <div className="date">{releaseDate}</div>
                 </div>
+                <div className="arrowDown">⇓</div>
                 <div className="tracks">
                     <ol>
                     {
                         tracks.map((track) => (
                             <li key={track.id}>
-                                    <Track track={track} albumName={album.name} image={image.url} />
+                                <Track track={track} albumName={album.name} image={image.url} />
                             </li>
                         ))
                     }

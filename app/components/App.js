@@ -2,7 +2,7 @@ import React from 'react';
 
 import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 
-require('../style.scss');
+require('../styles/style.scss');
 
 // components
 import ArtistList from "./ArtistList";

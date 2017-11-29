@@ -64,7 +64,10 @@ class Track extends React.Component {
                                     </div>
 
                                     <h3>
-                                        <a href={track.external_urls.spotify}>Open in Spotify</a>
+                                        <a href={track.external_urls.spotify}
+                                            target="_blank">
+                                            Open in Spotify
+                                        </a>
                                     </h3>
                                 </div>
                             </div>

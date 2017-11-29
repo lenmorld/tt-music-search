@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@import 'mixins';
 
 $primary-color: #602f6b;
 $primary-text-color: #ffffff;
 $primary-font: 'Ubuntu', sans-serif;
+$popup-background: rgba(0, 0, 0, 0.5);
 
 body, button, input {
   background-color: $primary-color;
@@ -16,9 +18,8 @@ ul {
 
 a {
   text-decoration: none;
+  color: $primary-text-color;
 }
-
-
 
 h1 {
   text-align: center;
@@ -35,11 +36,6 @@ h2 {
 
 header {
   text-align: center;
-
-  a {
-    text-decoration: none;
-    color: $primary-text-color;
-  }
 
   nav {
 
@@ -83,16 +79,15 @@ input, button {
     min-width: 200px;
     font-size: 20px;
   }
-
 }
 
 .artists-container {
 
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center; // horizontal
-  align-items: stretch; // vertical
+  @include flex-box(row, center, stretch);
 
+  a {
+    color: $primary-color;
+  }
 
   .artist {
     width: 250px;
@@ -100,8 +95,6 @@ input, button {
     height: 100px;
     background-color: $primary-text-color;
     margin: 10px;
-    //overflow: hidden;
-    //float: left;
 
     img {
       width: 100px;
@@ -116,16 +109,8 @@ input, button {
   }
 }
 
-
-
-
-
-// flex box
 .album-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center; // horizontal
-  align-items: flex-start; // vertical
+  @include flex-box(row, center, flex-start);
 }
 
 .album {
@@ -136,8 +121,9 @@ input, button {
   color: $primary-color;
   text-align: center;
 
-  //overflow: hidden;
-  //float: left;
+  a {
+    color: $primary-color;
+  }
 
   // transition: show tracks
   &:hover .tracks {
@@ -182,8 +168,12 @@ input, button {
 
   }
 
+  .arrowDown {
+    font-size: 20px;
+  }
+
   .tracks {
-    margin-top: 10px;
+    //margin-top: 10px;
     font-size: 12px;
     text-align: left;
     padding: 5px;
@@ -209,7 +199,6 @@ input, button {
 
     .track {
       position: relative;
-      //display: none;
 
       .popup {
         position: fixed;
@@ -220,22 +209,14 @@ input, button {
         right: 0;
         bottom: 0;
         margin: auto;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: $popup-background;
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include flex-box(column, center, center);
       }
+
       .popup_inner {
-        //position: absolute;
-        //left: 40%;
-        //right: 40%;
-        //top: 10%;
-        //bottom: 10%;
         width: 300px;
         margin: auto;
-        //position: relative;
         background: $primary-color;
         color: $primary-text-color;
 
@@ -246,29 +227,19 @@ input, button {
 
         .popup_container {
 
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          @include flex-box(column, center, center);
 
           .close-button-right {
-            //float:right;
             button {
               background-color: $primary-text-color;
               color: $primary-color;
             }
           }
 
-          .details-left {
-            //float: left;
-          }
-
           .media-bottom {
-            //clear: both;
             padding-top: 10px;
 
             a {
-              text-decoration: none;
               color: $primary-text-color;
             }
 
