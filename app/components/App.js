@@ -16,14 +16,19 @@ class App extends React.Component {
                 <BrowserRouter>
                     <div>
                         <header>
-                            <Link to="/"><h2>Lenny's music search</h2></Link>
-                            <Link to="/artists"><h2>Search</h2></Link>
+                            <Link to="/"><h1 className="banner">Lenny's music search</h1></Link>
+                            <nav>
+                                <ul>
+                                    <Link to="/"><li><h3>Search Artists</h3></li></Link>
+                                    <Link to="/newreleases"><li><h3>New Releases</h3></li></Link>
+                                </ul>
+                            </nav>
                             <hr/>
                         </header>
                         <div className="container">
                             <Switch>
-                                <Route exact path="/" component={NewReleases}/>
-                                <Route exact path="/artists" component={ArtistList}/>
+                                <Route exact path="/" component={ArtistList}/>
+                                <Route exact path="/newreleases" component={NewReleases}/>
                                 <Route path='/artists/:id' component={Artist}/>
                             </Switch>
                         </div>

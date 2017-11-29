@@ -22,15 +22,10 @@ class Search extends React.Component {
 
     render() {
         return(
-            <div>
-                <div className="search">
-                    <input type="search"
-                           placeholder={`Search ${this.props.query}`}
-                           onKeyPress={this.updateSearchText.bind(this)}  />
-                </div>
-                <p>
-                    {/*{this.state.searchText}*/}
-                </p>
+            <div className="search">
+                <input type="search"
+                       placeholder={`Search ${this.props.query}`}
+                       onKeyPress={this.updateSearchText.bind(this)}  />
             </div>
         );
     }

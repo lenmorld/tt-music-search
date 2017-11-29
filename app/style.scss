@@ -4,19 +4,63 @@ $primary-color: #602f6b;
 $primary-text-color: #ffffff;
 $primary-font: 'Ubuntu', sans-serif;
 
-
 body, button, input {
-  background-color:$primary-color;
+  background-color: $primary-color;
   color: $primary-text-color;
   font-family: $primary-font;
 }
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
 
 h1 {
   text-align: center;
 }
 
+h1.banner {
+  font-size: 40px;
+}
+
 h2 {
-	color: $primary-text-color;
+  color: $primary-text-color;
+  text-align: center;
+}
+
+header {
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: $primary-text-color;
+  }
+
+  nav {
+
+    ul {
+      padding-left: 0;
+      li {
+        display: inline-block;
+        box-sizing: border-box;
+        margin: 20px;
+        padding: 0 5px;
+        border: 2px solid $primary-text-color;
+        border-radius: 5px;
+
+        &:hover {
+          color: $primary-color;
+          background-color: $primary-text-color;
+        }
+      }
+    }
+
+  }
 }
 
 .container {
@@ -32,55 +76,56 @@ input, button {
 }
 
 .search {
+  text-align: center;
+
   input {
-    width: 20%;
+    width: 50%;
     min-width: 200px;
     font-size: 20px;
   }
 
 }
 
+.artists-container {
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; // horizontal
+  align-items: stretch; // vertical
 
 
-
-.artist-search-box {
-  width: 250px;
-  padding: 20px;
-  background-color: $primary-text-color;
-  margin: 10px;
-  overflow: hidden;
-
-  float: left;
-
-
-  img {
-    width: 100px;
+  .artist {
+    width: 250px;
+    padding: 20px;
     height: 100px;
-    float: left;
-    margin-right: 20px;
+    background-color: $primary-text-color;
+    margin: 10px;
+    //overflow: hidden;
+    //float: left;
+
+    img {
+      width: 100px;
+      height: 100px;
+      float: left;
+      margin-right: 20px;
+    }
+
+    .artist-name {
+      margin-left: 20px;
+    }
   }
-
-  .artist-name {
-    margin-left: 20px;
-  }
 }
 
 
-ul {
-  list-style-type: none;
-}
 
-a {
-  text-decoration: none;
-}
 
 
 // flex box
 .album-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;        // horizontal
-  align-items: flex-start;        // vertical
+  justify-content: center; // horizontal
+  align-items: flex-start; // vertical
 }
 
 .album {
@@ -99,13 +144,12 @@ a {
     max-height: 500px;
   }
 
-
   img {
     width: 100%;
     height: 200px;
   }
 
-  .album-details{
+  .album-details {
 
     display: block;
     overflow: hidden;
@@ -124,7 +168,7 @@ a {
       font-size: 12px;
     }
 
-    .stars{
+    .stars {
       float: left;
       width: 50%;
       text-align: left;
@@ -176,7 +220,7 @@ a {
         right: 0;
         bottom: 0;
         margin: auto;
-        background-color: rgba(0,0,0, 0.5);
+        background-color: rgba(0, 0, 0, 0.5);
 
         display: flex;
         flex-direction: column;
@@ -195,7 +239,7 @@ a {
         background: $primary-color;
         color: $primary-text-color;
 
-        h1,h2,h3 {
+        h1, h2, h3 {
           margin: 5px auto;
           text-align: center;
         }
@@ -242,8 +286,6 @@ a {
             }
           }
         }
-
-
 
         padding: 10px;
       }

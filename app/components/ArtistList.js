@@ -34,8 +34,6 @@ class ArtistList extends React.Component {
     handleSearch(query) {
         console.log("search query: ", query);
 
-        this.setState({headline: "Search results for: " + query});
-
         fetch('http://localhost:3001/spotify/search',
             {
                 method: 'post',
@@ -50,7 +48,18 @@ class ArtistList extends React.Component {
                 }
             })
             .then(data => {
-                this.setState({hits: JSON.parse(data), isLoading: false, prevQuery: query})
+                this.setState({
+                    hits: JSON.parse(data),
+                    isLoading: false,
+                    prevQuery: query,
+                })
+
+                if(this.state.hits.length) {
+                    this.setState({ headline: "Search results for: " + query});
+                } else {
+                    this.setState({ headline: "No results found for: " + query});
+                }
+
             })
             .catch(error => this.setState({error, isLoading: false}));
     }
@@ -68,19 +77,17 @@ class ArtistList extends React.Component {
             <Search query="Artists"
                     onSearch={this.handleSearch} />
             <h2>{this.state.headline}</h2>
-            <ul>
-                {
-                    hits.map((a) => (
-                        <li key={a.id}>
-                            <Link to={{pathname: `/artists/${a.id}`, artist: a}}>
-                                <div className="artist-search-box">
-                                    <ArtistItem artist={a}/>
-                                </div>
-                            </Link>
-                        </li>
-                    ))
-                }
-            </ul>
+            <div className="artists-container">
+            {
+                hits.map((a) => (
+                    <Link key={a.id} to={{pathname: `/artists/${a.id}`, artist: a}}>
+                        <div className="artist">
+                            <ArtistItem artist={a}/>
+                        </div>
+                    </Link>
+                ))
+            }
+            </div>
         </div> );
 
     }
