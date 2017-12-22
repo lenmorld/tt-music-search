@@ -5,7 +5,7 @@ let bodyParser = require('body-parser');
 let cors = require('cors');
 let DIST_DIR = path.join(__dirname, "dist");
 
-let port = 3000;
+let port = 80;
 
 app.use(cors());
 app.use(bodyParser.json());

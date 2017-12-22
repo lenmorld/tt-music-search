@@ -1,5 +1,5 @@
 import React from 'react';
-
+const PORT = 80;
 
 class ArtistItem extends React.Component {
     render() {
