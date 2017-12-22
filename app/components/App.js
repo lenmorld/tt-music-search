@@ -1,6 +1,5 @@
 import React from 'react';
-const PORT = 80;
-const HOST = '54.164.244.153';
+import connection from '../api/connection';
 
 import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 

@@ -3,8 +3,7 @@ import ArtistItem from "./ArtistItem";
 import {Link} from 'react-router-dom';
 
 import Search from "./Search";
-const PORT = 80;
-const HOST = '54.164.244.153';
+import connection from '../api/connection';
 
 class ArtistList extends React.Component {
 
@@ -36,7 +35,7 @@ class ArtistList extends React.Component {
     handleSearch(query) {
         // console.log("search query: ", query);
 
-        fetch(`http://${HOST}:${PORT}/spotify/search`,
+        fetch(`http://${connection.HOST}:${connection.PORT}/spotify/search`,
             {
                 method: 'post',
                 body: JSON.stringify({query: query}),
