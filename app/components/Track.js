@@ -1,5 +1,6 @@
 import React from 'react';
 const PORT = 80;
+const HOST = '127.0.0.1';
 
 class Track extends React.Component {
 

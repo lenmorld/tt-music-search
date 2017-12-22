@@ -2,6 +2,7 @@ import React from 'react';
 import Track from "./Track";
 import {Link} from 'react-router-dom';
 const PORT = 80;
+const HOST = '127.0.0.1';
 
 class Album extends React.Component {
 
@@ -27,7 +28,7 @@ class Album extends React.Component {
 
 
 
-        fetch(`http://localhost:${PORT}/spotify/details/${album.id}`,
+        fetch(`http://${HOST}:${PORT}/spotify/details/${album.id}`,
             {})
             .then(response => {
                 if(response.ok) {

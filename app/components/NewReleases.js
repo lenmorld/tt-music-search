@@ -1,6 +1,7 @@
 import React from 'react';
 import Album from "./Album";
 const PORT = 80;
+const HOST = '127.0.0.1';
 
 class NewReleases extends React.Component {
 
@@ -19,7 +20,7 @@ class NewReleases extends React.Component {
     componentDidMount() {
         this.setState({isLoading: true});
 
-        fetch(`http://localhost:${PORT}/spotify/newrelease`,
+        fetch(`http://${HOST}:${PORT}/spotify/newrelease`,
             {})
             .then(response => {
                 if (response.ok) {

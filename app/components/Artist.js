@@ -1,6 +1,7 @@
 import React from 'react';
 import Album from "./Album";
 const PORT = 80;
+const HOST = '127.0.0.1';
 
 class Artist extends React.Component {
 
@@ -17,7 +18,7 @@ class Artist extends React.Component {
     }
 
     fetchArtist(artistId) {
-        fetch(`http://localhost:${PORT}/spotify/artists/${artistId}`,
+        fetch(`http://${HOST}:${PORT}/spotify/artists/${artistId}`,
             {})
             .then(response => {
                 if(response.ok) {
@@ -31,7 +32,7 @@ class Artist extends React.Component {
     }
 
     fetchArtistAlbums(artistId) {
-        fetch(`http://localhost:${PORT}/spotify/albums/${artistId}`,
+        fetch(`http://${HOST}:${PORT}/spotify/albums/${artistId}`,
             {})
             .then(response => {
                 if(response.ok) {

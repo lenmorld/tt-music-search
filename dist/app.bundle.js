@@ -2436,7 +2436,7 @@ var Album = function (_React$Component) {
             // console.log("album: ", album.id);
 
 
-            fetch('http://localhost:' + PORT + '/spotify/details/' + album.id, {}).then(function (response) {
+            fetch('http://${HOST}:' + PORT + '/spotify/details/' + album.id, {}).then(function (response) {
                 if (response.ok) {
                     return response.json();
                 }
@@ -23751,7 +23751,7 @@ var ArtistList = function (_React$Component) {
 
             // console.log("search query: ", query);
 
-            fetch('http://localhost:' + PORT + '/spotify/search', {
+            fetch('http://${HOST}:' + PORT + '/spotify/search', {
                 method: 'post',
                 body: JSON.stringify({ query: query }),
                 headers: {
@@ -24045,7 +24045,7 @@ var Artist = function (_React$Component) {
         value: function fetchArtist(artistId) {
             var _this2 = this;
 
-            fetch("http://localhost:" + PORT + "/spotify/artists/" + artistId, {}).then(function (response) {
+            fetch("http://${HOST}:" + PORT + "/spotify/artists/" + artistId, {}).then(function (response) {
                 if (response.ok) {
                     return response.json();
                 }
@@ -24060,7 +24060,7 @@ var Artist = function (_React$Component) {
         value: function fetchArtistAlbums(artistId) {
             var _this3 = this;
 
-            fetch("http://localhost:" + PORT + "/spotify/albums/" + artistId, {}).then(function (response) {
+            fetch("http://${HOST}:" + PORT + "/spotify/albums/" + artistId, {}).then(function (response) {
                 if (response.ok) {
                     return response.json();
                 }
@@ -24343,7 +24343,7 @@ var NewReleases = function (_React$Component) {
 
             this.setState({ isLoading: true });
 
-            fetch("http://localhost:" + PORT + "/spotify/newrelease", {}).then(function (response) {
+            fetch("http://${HOST}:" + PORT + "/spotify/newrelease", {}).then(function (response) {
                 if (response.ok) {
                     return response.json();
                 }

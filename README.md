@@ -9,7 +9,7 @@ to run:
 ```
 $ npm start
 ```
-> browse at localhost:3000
+> browse at ${HOST}:3000
 
 
 
@@ -30,7 +30,7 @@ $ npm run dev
 $ node server.js
 ```
 
-> browse at localhost:3001
+> browse at ${HOST}:3001
 
 
 ### screens
