@@ -9,8 +9,7 @@ to run:
 ```
 $ npm start
 ```
-> browse at ${connection.HOST}:3000
-
+> browse at 3000 or 80 [api/connection.js]
 
 
 to build:
@@ -30,7 +29,7 @@ $ npm run dev
 $ node server.js
 ```
 
-> browse at ${connection.HOST}:3001
+> browse at 3001 or 80 [api/connection.js]
 
 
 ### screens
