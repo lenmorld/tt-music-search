@@ -18,6 +18,15 @@ class App extends React.Component {
                     <div>
                         <header>
                             <Link to="/"><h1 className="banner">Lenny's music search</h1></Link>
+                            <div className="spotify-logo">
+                              <h3>Powered by
+                              </h3>
+                              <img
+                                             src="http://res.cloudinary.com/dg93kyq63/image/upload/v1513968532/Spotify_Logo_RGB_Green_iomwqo.png"
+                                             alt="spotify"/>
+                            </div>
+
+
                             <nav>
                                 <ul>
                                     <Link to="/"><li><h3>Search Artists</h3></li></Link>

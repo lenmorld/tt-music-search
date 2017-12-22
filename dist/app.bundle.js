@@ -19988,6 +19988,16 @@ var App = function (_React$Component) {
                                 )
                             ),
                             _react2.default.createElement(
+                                'blockquote',
+                                { 'class': 'imgur-embed-pub', lang: 'en', 'data-id': 'R2PVxRK' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { href: '//imgur.com/R2PVxRK' },
+                                    'View post on imgur.com'
+                                )
+                            ),
+                            _react2.default.createElement('script', { async: true, src: '//s.imgur.com/min/embed.js', charset: 'utf-8' }),
+                            _react2.default.createElement(
                                 'nav',
                                 null,
                                 _react2.default.createElement(
