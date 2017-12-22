@@ -1,7 +1,7 @@
 import React from 'react';
 import Album from "./Album";
 const PORT = 80;
-const HOST = '127.0.0.1';
+const HOST = '54.164.244.153';
 
 class Artist extends React.Component {
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Track from "./Track";
 import {Link} from 'react-router-dom';
 const PORT = 80;
-const HOST = '127.0.0.1';
+const HOST = '54.164.244.153';
 
 class Album extends React.Component {
 
