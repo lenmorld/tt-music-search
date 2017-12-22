@@ -1,5 +1,13 @@
 ### TouchTunes challenge
 
+
+LIVE demo:
+
+http://54.164.244.153
+
+> Domain name coming up soon (if insisted by people =P)
+
+
 ```
 $ npm install
 ```
