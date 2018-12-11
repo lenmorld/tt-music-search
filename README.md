@@ -1,6 +1,7 @@
-### TouchTunes challenge
+### Lenny's Mini-Spotify
 
 #### A mini-spotify with 30-second playback, browsing of Artist, Album, Songs and New Releases
+#### This was developed as part of the Touchtunes Challenge
 
 ### Tech:
 
@@ -20,8 +21,6 @@ to build:
 ```
 $ npm run build
 ```
-
-
 
 to dev:
 
