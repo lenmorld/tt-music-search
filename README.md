@@ -1,20 +1,16 @@
 ### TouchTunes challenge
 
+#### A mini-spotify with 30-second playback, browsing of Artist, Album, Songs and New Releases
 
-LIVE demo:
+### Tech:
 
-http://54.164.244.153
-
-> Domain name coming up soon (if insisted by people =P)
-
-
-```
-$ npm install
-```
-
+- React
+- Node
+- Spotify API
 
 to run:
 ```
+$ npm install
 $ npm start
 ```
 > browse at 3000 or 80 [api/connection.js]
